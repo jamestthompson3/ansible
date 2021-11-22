@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  tasks:
+    - include: tasks/core.yml
+    - include: tasks/devtools.yml
+    - include: tasks/productivity.yml
+    - include: tasks/neovim.yml

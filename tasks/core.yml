@@ -1,0 +1,32 @@
+- name: Install system pkgs
+  become: true
+  pacman:
+    name:
+      - git
+      - base-devel
+      - openssh
+  tags:
+    - install
+    - core
+# - name: Clone yay
+#   become: true
+#   ansible.builtin.git:
+#     repo: "https://aur.archlinux.org/yay.git"
+#     dest: "/tmp/yay"
+#   tags:
+#     - install
+#     - core
+# - name: Install yay
+#   shell: "cd /tmp/yay && makepkg --noconfirm -si"
+#   tags:
+#     - install
+#     - core
+- name: Install core deps
+  pacman:
+    name:
+      - cmake
+      - unzip
+      - ninja
+  tags:
+    - install
+    - core

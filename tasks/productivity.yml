@@ -1,0 +1,14 @@
+- name: Dev productivity tools
+  become: true
+  pacman:
+    name:
+      - ripgrep
+      - jq
+      - yq
+      - fzf
+      - fd
+      - bat
+      - stow
+  tags:
+    - install
+    - productivity

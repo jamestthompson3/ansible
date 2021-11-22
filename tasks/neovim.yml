@@ -1,0 +1,23 @@
+- name: Install nvim prereqs
+  pacman:
+    name: "tree-sitter"
+  tags:
+    - install
+    - nvim
+- name: clone neovim
+  ansible.builtin.git:
+    repo: 'https://github.com/neovim/neovim.git'
+    dest: "{{ lookup('env', 'HOME') }}/programs/neovim"
+  tags:
+    - install
+    - nvim
+- name: build neovim
+  shell: "cd {{ lookup('env', 'HOME') }}/programs/neovim && make -j 8"
+  tags:
+    - install
+    - nvim
+- name: install neovim
+  shell: "cd {{ lookup('env', 'HOME') }}/programs/neovim && make install"
+  tags:
+    - install
+    - nvim

@@ -1,0 +1,21 @@
+- name: Install node developer tools
+  become: true
+  pacman:
+    name:
+      - nodejs
+      - yarn
+      - npm
+      - rustup
+  tags:
+    - install
+    - node
+- name: Install fnm
+  shell: "$(curl -fsSL https://fnm.vercel.app/install | bash) && source {{ lookup('env', 'HOME') }}/.bashrc"
+  tags:
+    - install
+    - node
+- name: Set node to v16
+  shell: fnm use 16.0.0 --install-if-missing
+  tags:
+    - install
+    - node
