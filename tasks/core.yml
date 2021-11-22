@@ -9,18 +9,20 @@
     - install
     - core
 - name: Clone yay
-  become: true
   ansible.builtin.git:
     repo: "https://aur.archlinux.org/yay.git"
     dest: "/tmp/yay"
   tags:
     - install
     - core
+    - yay
 - name: Install yay
+  become: false
   shell: "cd /tmp/yay && makepkg --noconfirm -si"
   tags:
     - install
     - core
+    - yay
 - name: Install core deps
   pacman:
     name:

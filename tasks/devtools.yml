@@ -6,6 +6,7 @@
       - yarn
       - npm
       - rustup
+      - go
   tags:
     - install
     - node

@@ -8,7 +8,31 @@
       - fzf
       - fd
       - bat
+      - lua
       - stow
+  tags:
+    - install
+    - productivity
+- name: Clone Ctags
+  ansible.builtin.git:
+    repo: 'https://github.com/universal-ctags/ctags.git'
+    dest: "{{ lookup('env', 'HOME') }}/programs/ctags"
+  tags:
+    - install
+    - productivity
+- name: Prebuild Ctags
+  shell: "cd {{ lookup('env', 'HOME') }}/programs/ctags && ./autogen.sh && ./configure  "
+  tags:
+    - install
+    - productivity
+- name: Build Ctags
+  shell: "cd {{ lookup('env', 'HOME') }}/programs/ctags && make"
+  tags:
+    - install
+    - productivity
+- name: Install Ctags
+  become: true
+  shell: "cd {{ lookup('env', 'HOME') }}/programs/ctags && make install"
   tags:
     - install
     - productivity

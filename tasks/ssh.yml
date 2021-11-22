@@ -26,9 +26,15 @@
     - install
     - ssh
 - name: Set authorized key took from file
+  tags:
+    - ssh
   authorized_key:
     user: "{{ lookup('env', 'USER') }}"
     state: present
-    key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa.pub"
+    key: "{{ lookup('env', 'HOME') }}/.ssh/gh.pub"
   with_fileglob:
   - "{{ lookup('env', 'HOME') }}/.ssh/*.pub"
+- name: Add SSH key
+  shell: "eval \"$(ssh-agent -s)\" && ssh-add {{ dest_key }}"
+  tags:
+    - ssh

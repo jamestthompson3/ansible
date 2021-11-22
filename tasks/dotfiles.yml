@@ -1,0 +1,12 @@
+- name: Pull down dotfiles
+  ansible.builtin.git:
+    repo: 'git@github.com:jamestthompson3/dotfiles.git'
+    dest: "{{ lookup('env', 'HOME') }}/dotfiles"
+  tags:
+    - install
+    - dots
+- name: Run dotfile installation
+  shell: "cd {{ lookup('env', 'HOME') }}/dotfiles && ./install.sh"
+  tags:
+    - install
+    - dots

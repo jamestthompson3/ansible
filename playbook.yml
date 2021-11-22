@@ -1,13 +1,13 @@
 ---
 - hosts: localhost
   vars:
-    source_key: "./.ssh/id_rsa"
-    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
-    personal: "{{ lookup('env', 'HOME') }}/personal"
+    source_key: "./ssh/gh"
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/gh"
   tasks:
     - include: tasks/core.yml
     - include: tasks/ssh.yml
     - include: tasks/devtools.yml
     - include: tasks/productivity.yml
+    - include: tasks/dotfiles.yml
     - include: tasks/neovim.yml
     - include: tasks/applications.yml
