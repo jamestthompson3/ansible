@@ -1,0 +1,34 @@
+- name: Install window manager
+  become: true
+  pacman:
+    name: 'awesome'
+  tags:
+    - apps
+- name: Install DE tweaks
+  become: true
+  pacman:
+    name:
+      - lxappearance
+      - python-pywal
+      - neofetch-git
+      - ttf-hack
+      - ttf-font-awesome-4
+      - feh
+      - imagemagick
+- name: Install desktop apps
+  become: true
+  pacman:
+    name:
+      - kitty
+      - rofi
+      - vlc
+      - redshift
+      - discord
+      - firefox
+  tags:
+    - apps
+- name: Install Community Apps
+  become: true
+  shell: "yay --noconfim -S pacmixer megasync logo-ls"
+  tags:
+    - apps

@@ -21,3 +21,10 @@
   tags:
     - install
     - nvim
+- name: Grab configuration
+  ansible.builtin.git:
+    repo: 'https://github.com/jamestthompson3/vimConfig.git'
+    dest: "{{ lookup('env', 'HOME') }}/.config/nvim"
+  tags:
+    - install
+    - nvim
