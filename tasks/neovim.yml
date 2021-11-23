@@ -12,7 +12,7 @@
     - install
     - nvim
 - name: build neovim
-  shell: "cd {{ lookup('env', 'HOME') }}/programs/neovim && make -j 8"
+  shell: "cd {{ lookup('env', 'HOME') }}/programs/neovim && make CMAKE_BUILD_TYPE=Release -j 8"
   tags:
     - install
     - nvim
